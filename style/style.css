@@ -1,0 +1,266 @@
+*
+{   box-sizing: border-box;
+}
+
+:root
+{   --head-bg-color: rgba(255, 255, 0, 0.5);
+    --head-brd-color: darkgray;
+}
+
+body
+{   color: black;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
+
+header
+{   background: var(--head-bg-color);
+    border: 2px solid var(--head-brd-color);
+    border-radius: 5px;
+    font-size: 40px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+main
+{   background: rgba(0, 0, 255, 0.5);
+    height: auto;
+    padding: 20px;
+}
+
+.button-div
+{   background: rgba(255, 0, 0, 0.5);
+    /* float: left; */
+    height: 100%;
+    /* width: auto; */
+    /* min-width: 15%; */
+    width: 100%;
+}
+
+.button-div img
+{   /* display: block; */
+    margin: 5px;
+}
+
+.content
+{   background: rgba(0, 255, 0, 0.5);
+    /* float: left; */
+    height: auto;
+    /* width: 85%; */
+    width: 100%;
+}
+
+/*                                      */
+/* style settings for log table         */
+/*                                      */
+
+#enrichment-table
+{   font-size: 18px;
+    font-weight: bold;
+    /* margin: 0px auto; */
+}
+
+.animal-row, .table-heading
+{   border: 1px solid black;
+    border-radius: 5px;
+    clear: both;
+    color: black;
+    height: 32px;
+    margin: 0px auto;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    /* padding: 5px; */
+    width: 1068px;
+}
+
+.table-heading
+{   background: black;
+    color: white;
+    font-weight: normal;
+    /* padding: 5px; */
+    text-align: left;
+}
+
+.et-name
+{   /* display: inline; */
+    float: left;
+    margin: 5px;
+    width: 125px;
+}
+
+.et-color
+{   /* display: inline; */
+    float: left;
+    margin: 5px;
+    width: 50px;
+}
+
+.et-cage, .et-day
+{   /* display: inline; */
+    float: left;
+    margin: 2px;
+    text-align: center;
+    width: 26px;
+}
+
+.et-day-inside
+{   border: 1px solid black;
+    border-radius: 2px;
+    height: 26px;
+    /* margin: 2px; */
+    width: 26px;
+}
+
+.black-theme
+{   background: #8f8f8f;
+    border-color: black;
+    color:  black;
+}
+
+.blue-theme
+{   background: #8f8fff;
+    border-color: blue;
+    color:  blue;
+}
+
+.green-theme
+{   background: #8fff8f;
+    border-color: green;
+    color:  green;
+}
+
+.orange-theme
+{   background: #ffff8f;
+    border-color: orange;
+    color:  orange;
+}
+
+.purple-theme
+{   background: #ff8fff;
+    border-color: purple;
+    color:  purple;
+}
+
+.red-theme
+{   background: #ff8f8f;
+    border-color: red;
+    color:  red;
+}
+
+/*                                      */
+/* style settings for system messages   */
+/*                                      */
+
+.message-wrapper
+{   display: none;
+    width: 100%;
+}
+
+.message-div
+{   border: 2px solid lightblue;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.message-heading
+{   background: red;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.message-text
+{   background: #ff8f8f;
+    color: red;
+    padding: 10px;
+}
+
+/*                                      */
+/* miscellaneous style                  */
+/*                                      */
+
+button
+{   background: skyblue;
+    border: 2px solid skyblue;
+    border-radius: 5px;
+    color: blue;
+    font-size: 10px;
+    margin: 2px;
+    padding: 5px;
+}
+
+button:hover
+{   background: white;
+    border-color: blue;
+    color: blue;
+}
+
+/*                                      */
+/* style specific to sticky footer      */
+/*                                      */
+
+body, html
+{   height: 100%;
+}
+
+.wrapper
+{   background: rgba(0, 255, 255, 0.5);
+    height: auto;
+    margin-bottom: -43px;
+    min-height: 100%;
+    padding: 10px;
+}
+
+.push
+{   background: yellow;
+    clear: both;
+    height: 43px;
+}
+
+footer
+{   background: var(--head-bg-color);
+    border: 1px solid var(--head-brd-color);
+    border-radius: 5px;
+    font-size: 10px;
+    margin: 10px;
+    padding: 5px;
+}
+
+/*                                      */
+/* media queries for responsive design  */
+/*                                      */
+
+@media screen and (max-width: 1200px)
+{   .animal-row, .table-heading
+    {   width: 858px;
+    }
+
+    .week-four
+    {   display: none;
+    }
+}
+
+@media screen and (max-width: 990px)
+{   .animal-row, .table-heading
+    {   width: 648px;
+    }
+
+    .week-three
+    {   display: none;
+    }
+}
+
+@media screen and (max-width: 768px)
+{   .animal-row, .table-heading
+    {   width: 438px;
+    }
+
+    .week-two
+    {   display: none;
+    }
+}
