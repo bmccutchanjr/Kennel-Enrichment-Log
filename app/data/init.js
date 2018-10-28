@@ -6,7 +6,8 @@ const animals = new Animals;
 setTimeout(function()
 {
     console.log (chalk.red("setTimeout"));
-    console.log (chalk.red("*", animals.getAll(), "*"));
+//     console.log (chalk.red("*", animals.getAll(), "*"));
+    console.log (chalk.red(JSON.stringify(animals.getAll(), null, 2)));
 
 }, 5000);
 console.log (chalk.yellow("init.js"));

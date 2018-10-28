@@ -25,27 +25,21 @@ var Animals = function ()
 
         console.log(chalk.blue("Initializing Animals"));
 
+        var obj = this;
+
         fs.readFile ("animals.json", function (error, data)
         {   if (error)
             {   console.error(chalk.red(error));
                 return false;
             }
 
-            console.log(chalk.green("Successful"))
-//             this.animals = JSON.parse(data);
-            animals = JSON.parse(data);
-console.log(chalk.green("animals.init()"));
-console.log(chalk.green(JSON.stringify(this.animals[3], null, 2)));
-                        return true;
+            obj.animals = JSON.parse(data);
+            return true;
         });
     };
 
     this.getAll = function ()
     {   // Reserved for future use
-console.log(chalk.blue("animals.getAll()"));
-console.log(chalk.blue("length: ", this.animals.length));
-// console.log(chalk.blue(this.animals[3]));
-console.log(chalk.blue(this.animals[3]));
         return this.animals;
     };
 
