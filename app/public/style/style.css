@@ -66,9 +66,10 @@ main
 
 .animal-row, .table-heading
 {   border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 3px;
     clear: both;
     color: black;
+    color: white;
     height: 32px;
     margin: 0px auto;
     margin-bottom: 2px;
@@ -117,38 +118,44 @@ main
 
 .black-theme
 {   background: #8f8f8f;
+    background: black;
     border-color: black;
-    color:  black;
+    /* color:  black; */
 }
 
 .blue-theme
 {   background: #8f8fff;
+    background: blue;
     border-color: blue;
-    color:  blue;
+    /* color:  blue; */
 }
 
 .green-theme
 {   background: #8fff8f;
+    background: green;
     border-color: green;
-    color:  green;
+    /* color:  green; */
 }
 
 .orange-theme
 {   background: #ffff8f;
+    background: orange;
     border-color: orange;
-    color:  orange;
+    /* color:  orange; */
 }
 
 .purple-theme
 {   background: #ff8fff;
+    background: purple;
     border-color: purple;
-    color:  purple;
+    /* color:  purple; */
 }
 
 .red-theme
 {   background: #ff8f8f;
+    background: red;
     border-color: red;
-    color:  red;
+    /* color:  red; */
 }
 
 /*                                      */

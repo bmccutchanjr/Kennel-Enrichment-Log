@@ -200,14 +200,23 @@ $(document).ready(function()
 // //     });
 //     });
 
-    database.ref("AnimalMaster").on("child_added", function(snap)
+    database.ref("AnimalMaster").on("value", function(snap)
     {   if (snap.val() != undefined)
         {   
 console.log("AnimalMaster.on()");
 console.log(snap.val());
-            enrichmentTable (snap.val());
-            var children = snap.numChildren();
+//             enrichmentTable (snap.val());
+            var children = snap.val();
 console.log(children);
+console.log (typeof children);
+            var keys = Object.keys(children);
+console.log (keys);
+            var kLength = keys.length;
+
+            for (var i=0; i<kLength; i++)
+            {   console.log (children[keys[i]]);
+                enrichmentTable (children[keys[i]]);
+            };
 
 //             for (i=0; i<28; i++)
 //             {
@@ -216,8 +225,13 @@ console.log(children);
 //                 {   // for now a 50/50 chance that each dog was walked on any given day
 //                     database.ref("ActivtyLog/" + snap.val().UniqueID + "/" + i).set(
 //                     {   Walked: true
+//                     },
+//                     function(error)
+//                     {    if (error)
+//                          {
+//                          }
 //                     })
-//                 }
+//                  }
 //             }
         }
     });
