@@ -3,180 +3,180 @@
     "UniqueID": "1001",
     "Name": "Geronimo",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "B",
+    "Color": "blue",
     "Cage": 32
   },
   {
     "UniqueID": "1002",
     "Name": "Buddy",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "G",
+    "Color": "green",
     "Cage": 32
   },
   {
     "UniqueID": "1003",
     "Name": "KeKe",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "BK",
+    "Color": "black",
     "Cage": 32
   },
   {
     "UniqueID": "1004",
     "Name": "Genie",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
     "UniqueID": "1005",
     "Name": "Darwin",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
     "UniqueID": "1006",
     "Name": "Buddy",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "B",
+    "Color": "blue",
     "Cage": 32
   },
   {
     "UniqueID": "1007",
     "Name": "Sissy",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "R",
+    "Color": "red",
     "Cage": 32
   },
   {
     "UniqueID": "1008",
     "Name": "Lady Jane",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
     "UniqueID": "1009",
     "Name": "Jackson",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "B",
+    "Color": "blue",
     "Cage": 32
   },
   {
     "UniqueID": "1010",
     "Name": "Bocephus",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "B",
+    "Color": "blue",
     "Cage": 32
   },
   {
     "UniqueID": "1011",
     "Name": "China",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "O",
+    "Color": "orange",
     "Cage": 32
   },
   {
     "UniqueID": "1012",
     "Name": "Pretty Boy",
     "species": "canine",
-    "category": "dog",
+    "category": "dogs",
     "Active": true,
-    "Color": "O",
+    "Color": "orange",
     "Cage": 32
   },
   {
     "UniqueID": "1013",
     "Name": "Chalupa",
     "species": "feline",
-    "category": "cat",
+    "category": "cats",
     "Active": true,
-    "Color": "G",
+    "Color": "green",
     "Cage": 32
   },
   {
     "UniqueID": "1014",
     "Name": "Digger",
     "species": "feline",
-    "category": "cat",
+    "category": "cats",
     "Active": true,
-    "Color": "O",
+    "Color": "orange",
     "Cage": 32
   },
   {
     "UniqueID": "1015",
     "Name": "Donovan",
     "species": "feline",
-    "category": "cat",
+    "category": "cats",
     "Active": true,
-    "Color": "G",
+    "Color": "green",
     "Cage": 32
   },
   {
     "UniqueID": "1016",
     "Name": "Patches",
     "species": "feline",
-    "category": "cat",
+    "category": "cats",
     "Active": true,
-    "Color": "O",
+    "Color": "orange",
     "Cage": 32
   },
   {
     "UniqueID": "1017",
     "Name": "Asia",
     "species": "feline",
-    "category": "cat",
+    "category": "cats",
     "Active": true,
-    "Color": "O",
+    "Color": "orange",
     "Cage": 32
   },
   {
     "UniqueID": "1018",
     "Name": "Ellie",
     "species": "feline",
-    "category": "cat",
+    "category": "cats",
     "Active": true,
-    "Color": "O",
+    "Color": "orange",
     "Cage": 32
   },
   {
     "UniqueID": "1019",
     "Name": "Trigger",
     "species": "equine",
-    "category": "horse",
+    "category": "other",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
     "UniqueID": "1020",
     "Name": "Silver",
     "species": "equine",
-    "category": "horse",
+    "category": "other",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
@@ -185,7 +185,7 @@
     "species": "rabbit",
     "category": "critters",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
@@ -194,7 +194,7 @@
     "species": "skunk",
     "category": "critters",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
@@ -203,7 +203,7 @@
     "species": "rabbit",
     "category": "critters",
     "Active": true,
-    "Color": "P",
+    "Color": "green",
     "Cage": 32
   },
   {
@@ -212,7 +212,7 @@
     "species": "mouse",
     "category": "critters",
     "Active": true,
-    "Color": "P",
+    "Color": "purple",
     "Cage": 32
   },
   {
@@ -221,7 +221,7 @@
     "species": "mouse",
     "category": "critters",
     "Active": true,
-    "Color": "G",
+    "Color": "green",
     "Cage": 32
   },
   {
@@ -230,6 +230,7 @@
     "species": "mouse",
     "category": "critters",
     "Active": true,
+    "Color": "purple",
     "Cage": 32
   }
 ]
