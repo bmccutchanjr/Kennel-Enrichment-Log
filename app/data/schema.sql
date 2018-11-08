@@ -101,22 +101,28 @@ create table People
     active          boolean
                     default false,
 
-    name            varchar(20)                 -- name of this person
+    surname         varchar(20)                 -- surname of this individual
                     not null,
 
-    volgistics      smallint(6)                 -- this persons volgistics id
+    given           varchar(10)                 -- given name of this person
+                    not null,
+
+    volgistics      smallint(6)                 -- volgistics id of this individual
                     default null,
 
-    auth_level            char(10),
+    auth_level      char(10)
+                    default "volunteer",
 
     notes           int(10)
                     default null,
 
     enter_date      date                        -- date the record was created
-                    not null,
+                    not null
+                    default CURRENT_TIMESTAMP,
 
     mod_date        date                        -- date this record was last modified
-                    not null,
+                    not null
+                    default CURRENT_TIMESTAMP,
 
     mod_by          int(10)                     -- the primary key of the last person to modify
                     not null,                   -- this record

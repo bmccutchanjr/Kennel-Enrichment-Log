@@ -24,7 +24,7 @@
 const express = require('express');
 const http = require("http").Server(express);        // seems to be required for socket.io
 const io = require("socket.io")(http);               // push content to the browser
-const apiRoutes = require ("./app/routes/api.js")(io);
+const apiRoutes = require ("./app/data/api.js")(io);
 const htmlRoutes = require ("./app/routes/html.js");
 // 01 const htmlRoutes = require ("./app/routes/html.js")(io);
 
