@@ -19,8 +19,8 @@
   "homepage": "https://github.com/bmccutchanjr/Kennel-Enrichment-Log#readme",
   "dependencies": {
     "chalk": "^2.4.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
-    "express-device": "^0.4.2",
     "http": "0.0.0",
     "socket.io": "^2.1.1"
   }

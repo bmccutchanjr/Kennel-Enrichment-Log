@@ -1,5 +1,5 @@
-// Kennel ENrichment Log is a web based analog to the real world paper based method volunteers at the
-// Summit County Humane Society use to log activity with the animals, primarilly the dogs.  There are
+// Kennel Enrichment Log is a web based analog to the real world paper based method volunteers at the
+// Summit County Humane Society use to log activity with the animals, primarily the dogs.  There are
 // two forms that need to be filled out.
 //
 // First and most important is a sign-out sheet.  Volunteers are required to sign an animal out before
@@ -17,26 +17,24 @@
 //
 // This application is not in use at the shelter.  It's a personal excersize for me.
 
+//01 htmlRoutes doesn't need socket.io -- that IS required in apiRoutes though
+
 // Require the dependencies
 // const express = require('express')();
 const express = require('express');
 const http = require("http").Server(express);        // seems to be required for socket.io
 const io = require("socket.io")(http);               // push content to the browser
-// const apiRoutes = require ("./app/routes/api.js");
-// const htmlRoutes = require ("./app/routes/html.js");
-const htmlRoutes = require ("./app/routes/html.js")(io);
+const apiRoutes = require ("./app/routes/api.js")(io);
+const htmlRoutes = require ("./app/routes/html.js");
+// 01 const htmlRoutes = require ("./app/routes/html.js")(io);
 
 // Configure ExpressJS
 const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-// app.use('/api', apiRoutes);
+app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
-
-// express.get('/', function(request, response) {
-//   res.sendFile(__dirname + '/server.html');
-// });
 
 io.on('connection', function(socket){
   console.log('A new WebSocket connection has been established');

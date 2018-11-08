@@ -1,0 +1,116 @@
+*
+{   box-sizing: border-box;
+}
+
+:root
+{   --head-bg-color: rgba(255, 255, 0, 0.5);
+    --head-brd-color: darkgray;
+}
+
+body
+{   color: black;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
+
+header
+{   background: var(--head-bg-color);
+    border: 2px solid var(--head-brd-color);
+    border-radius: 5px;
+    font-size: 40px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+main
+{   background: rgba(0, 0, 255, 0.5);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+    padding: 20px;
+}
+
+.animal-button
+{   border: 2px solid black;
+    border-radius: 50%;
+    height: 300px;
+    margin: 25px;
+    overflow: hidden;
+    text-align: center;
+    width: 300px;
+}
+
+.animal-button:hover
+{   box-shadow: 0px 0px 10px 10px red;
+}
+
+/*                                      */
+/* style specific to sticky footer      */
+/*                                      */
+
+body, html
+{   height: 100%;
+}
+
+.wrapper
+{   background: rgba(0, 255, 255, 0.5);
+    height: auto;
+    margin-bottom: -43px;
+    min-height: 100%;
+    padding: 10px;
+}
+
+.push
+{   background: yellow;
+    clear: both;
+    height: 43px;
+}
+
+footer
+{   background: var(--head-bg-color);
+    border: 1px solid var(--head-brd-color);
+    border-radius: 5px;
+    font-size: 10px;
+    margin: 10px;
+    padding: 5px;
+}
+
+/*                                      */
+/* media queries for responsive design  */
+/*                                      */
+
+@media screen and (max-width: 1200px)
+{   .animal-row, .table-heading
+    {   width: 858px;
+    }
+
+    .week-four
+    {   display: none;
+    }
+}
+
+@media screen and (max-width: 990px)
+{   .animal-row, .table-heading
+    {   width: 648px;
+    }
+
+    .week-three
+    {   display: none;
+    }
+}
+
+@media screen and (max-width: 768px)
+{   .animal-row, .table-heading
+    {   width: 438px;
+    }
+
+    .week-two
+    {   display: none;
+    }
+}
