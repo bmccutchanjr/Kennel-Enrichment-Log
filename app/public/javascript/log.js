@@ -1,110 +1,36 @@
 // Kennel Enrichment Log
 
-// var Animals =
-// [   {   UniqueID: "1001",
-//         Name: "Geronimo",
-//         Active: true,
-//         Color: "B",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1002",
-//         Name: "Buddy",
-//         Active: true,
-//         Color: "G",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1003",
-//         Name: "KeKe",
-//         Active: true,
-//         Color: "BK",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1004",
-//         Name: "Genie",
-//         Active: true,
-//         Color: "P",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1005",
-//         Name: "Darwin",
-//         Active: true,
-//         Color: "P",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1006",
-//         Name: "Buddy",
-//         Active: true,
-//         Color: "B",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1007",
-//         Name: "Sissy",
-//         Active: true,
-//         Color: "R",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1008",
-//         Name: "Lady Jane",
-//         Active: true,
-//         Color: "P",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1009",
-//         Name: "Jackson",
-//         Active: true,
-//         Color: "B",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1010",
-//         Name: "Bocephus",
-//         Active: true,
-//         Color: "B",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1011",
-//         Name: "China",
-//         Active: true,
-//         Color: "O",
-//         Cage: 32
-//     },
-//     {   UniqueID: "1012",
-//         Name: "Pretty Boy",
-//         Active: true,
-//         Color: "O",
-//         Cage: 32
-//     },
-// ]
-
 function enrichmentTable (data)
-{   // This function is only used to temporarilly mock up an enrichment log.  Once the page is interacting
-    // with Firebase, there will be no need for this function
+{   // This function is formats data received from the api for display on the screen.  It is called by
+    // getAll(), which in turn is called when the page first loads, or when the page receives a push
+    // notification from the server.
 
-    if (data.Active)
-    {   // but only if this animal is "active"
-
+    var dLength = data.length;
+    for (var i=0; i<dLength; i++)
+    {
         var animalDiv = $("<div>");
 
         var nameDiv = $("<div>");
         nameDiv
             .addClass("et-name")
-            .text (data.Name);
+            .text (data[i].name);
 
         var colorDiv = $("<div>");
         colorDiv
             .addClass("et-color")
-            .text (data.Color);
+            .text (data[i].color_code);
             
         var cageDiv = $("<div>");
         cageDiv
             .addClass("et-cage")
-            .text ("--");
+            .text (data[i].cage);
                 
         animalDiv
             .append(nameDiv)
             .append(colorDiv)
             .append(cageDiv);
             
-        for (var i=0; i<28; i++)
+        for (var j=0; j<28; j++)
         {   var insideDiv = $("<div>");
             insideDiv
                 .addClass("et-day-inside")
@@ -112,9 +38,9 @@ function enrichmentTable (data)
 
             var weekClass = "week-four";
 
-            if (i < 21) weekClass = "week-three";
-            if (i < 14) weekClass = "week-two";
-            if (i < 7) weekClass = "week-one";
+            if (j < 21) weekClass = "week-three";
+            if (j < 14) weekClass = "week-two";
+            if (j < 7) weekClass = "week-one";
         
             var detailDiv = $("<div>");
             detailDiv
@@ -124,34 +50,7 @@ function enrichmentTable (data)
             animalDiv.append(detailDiv);
         }
             
-        var colorClass = "";
-
-        switch (data.Color)
-        {   case "B":
-            {   colorClass = "blue-theme";
-                break;
-            }
-            case "G":
-            {   colorClass = "green-theme";
-                break;
-            }
-            case "O":
-            {   colorClass = "orange-theme";
-                break;
-            }
-            case "P":
-            {   colorClass = "purple-theme";
-                break;
-            }
-            case "R":
-            {   colorClass = "red-theme";
-                break;
-            }
-            default:
-            {   colorClass = "black-theme";
-                break;
-            }
-        }
+        var colorClass = data[i].color_code + "-theme";
 
         animalDiv
             .addClass ("animal-row " + colorClass);
@@ -161,78 +60,36 @@ function enrichmentTable (data)
     }
 }
 
+function getAnimals (animalGroup = "dogs")
+{   // Get the list os animals to include on the screen
+
+    $.get("/api/animals/allactive/" + animalGroup)
+    .then (function(results)
+    {   
+        enrichmentTable (results);
+    })
+    .catch (function(error)
+    {   // An error occured, let the users know.
+
+        // This error handling is not quite complete.  It assumes the error happened on the server and
+        // is responding in kind, but the error could be (probably is not) a run time error in this script.
+        // In the latter case, there isn't enough information here to trouble shoot it.  You need to open
+        // the console to see a more detailed error.
+
+        if (error.responseText)
+            $(".server-message").text(error.responseText)
+        else
+            $(".server-message")
+            .text("An unspecified run time error occured in this script.  Please contact " +
+                  "your IT staff for support.  More details may be available on the console.");
+
+        $(".message-wrapper").css("display", "block");
+    })
+}
+
 $(document).ready(function()
-{   // Initialize Firebase
+{   
+    var cookie = document.cookie;
 
-    var config =
-    {   apiKey: "AIzaSyAc7R3hYu0vaODV_M36ZfWs3JKugR-IeOE",
-        authDomain: "kennel-log.firebaseapp.com",
-        databaseURL: "https://kennel-log.firebaseio.com",
-        projectId: "kennel-log",
-        storageBucket: "kennel-log.appspot.com",
-        messagingSenderId: "159110224354"
-    };
-
-    firebase.initializeApp(config);
-
-    var database = firebase.database();
-
-//     Animals.forEach(function(data)
-//     {   // Get initial test data into Firebase
-// 
-//         var UniqueID = data.UniqueID;
-// 
-//         database.ref("AnimalMaster" + "/" + data.UniqueID).set(
-//         {   Active: true,
-//             Name: data.Name,
-//             Color: data.Color,
-//             Cage: Math.floor(Math.random() * 100)
-//         });
-// 
-// // Let's save this for the next step...right now lets populate the AnimalMaster key.
-// //         for (var i=0; i<28; i++)
-// //         {   
-// //             database.ref("/ActivityRecord").set(
-// //             {
-// // 
-// //             });
-// //         }
-// //     });
-//     });
-
-    database.ref("AnimalMaster").on("value", function(snap)
-    {   if (snap.val() != undefined)
-        {   
-console.log("AnimalMaster.on()");
-console.log(snap.val());
-//             enrichmentTable (snap.val());
-            var children = snap.val();
-console.log(children);
-console.log (typeof children);
-            var keys = Object.keys(children);
-console.log (keys);
-            var kLength = keys.length;
-
-            for (var i=0; i<kLength; i++)
-            {   console.log (children[keys[i]]);
-                enrichmentTable (children[keys[i]]);
-            };
-
-//             for (i=0; i<28; i++)
-//             {
-// console.log("children: ", children);
-//                 if (Math.random() < .5)
-//                 {   // for now a 50/50 chance that each dog was walked on any given day
-//                     database.ref("ActivtyLog/" + snap.val().UniqueID + "/" + i).set(
-//                     {   Walked: true
-//                     },
-//                     function(error)
-//                     {    if (error)
-//                          {
-//                          }
-//                     })
-//                  }
-//             }
-        }
-    });
+    getAnimals (cookie["animal-cookie"]);
 })

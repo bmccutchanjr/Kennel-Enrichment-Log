@@ -20,58 +20,48 @@
 
 // Require the dependencies
 const chalk = require("chalk");
-// 01 const cookieParser = require("cookie-parser");
 const express = require("express");
 const path = require("path");
 
 // Configure express
 const app = express();
 const router = express.Router ();
-// 01 app.use(cookieParser());
 
-// 02 var isMobile = false;
+app.use ("/", router);
 
-// 03 const routerIO = (function(io)
-// 03 {   // To use socket.io with this module I need to pass a reference to it.  That can only be done by
-// 03	  // wrapping my routes in a function.
+router
+.use (function (request, response, next)
+{   // I'm still having trouble debugging my routes.  I need somethng that always happens to log the
+	// request URL to the console.
+	// console.log(chalk.yellow("A ", request.device.type, " is requesting a file"));
 
-	app.use ("/", router);
+	console.log(chalk.blue("html.js"));
+	console.log(chalk.blue("requesting: ", request.url));
 
-	router
-	.use (function (request, response, next)
-	{   // I'm still having trouble debugging my routes.  I need somethng that always happens to log the
-		// request URL to the console.
-		// console.log(chalk.yellow("A ", request.device.type, " is requesting a file"));
-console.log(chalk.blue("requesting: ", request.url));
+	next();
+})
+.get("/cagepage/:folder/:what", function(request, response)
+{	// serve auxiliary files for /logs endpoint.
+	
+	response.sendFile(path.join(__dirname, "../public/" + request.params.folder + "/" + request.params.what));
+})
+.get("/cagepage/:animal", function(request, response)
+{	// set a cookie indicating the animal type from this request (the client will need that value in
+	// several pages) and serve the enrichment log page.
 
-		next();
-	})
-	.get("/cagepage/:folder/:what", function(request, response)
-	{	// serve auxiliary files for /logs endpoint.
-		
-		response.sendFile(path.join(__dirname, "../public/" + request.params.folder + "/" + request.params.what));
-	})
-	.get("/cagepage/:animal", function(request, response)
-	{	// set a cookie indicating the animal type from this request (the client will need that value in
-		// several pages) and serve the enrichment log page.
+	response.sendFile(path.join(__dirname, "../public/cagepage.html"));
+})
+.get("/log/:folder/:what", function(request, response)
+{	// serve auxiliary files for /logs endpoint.
+	
+	response.sendFile(path.join(__dirname, "../public/" + request.params.folder + "/" + request.params.what));
+})
+.get("/log/:animal", function(request, response)
+{	// set a cookie indicating the animal type from this request (the client will need that value in
+	// several pages) and serve the enrichment log page.
 
-		response.sendFile(path.join(__dirname, "../public/cagepage.html"));
-	})
-	.get("/log/:folder/:what", function(request, response)
-	{	// serve auxiliary files for /logs endpoint.
-		
-		response.sendFile(path.join(__dirname, "../public/" + request.params.folder + "/" + request.params.what));
-	})
-	.get("/log/:animal", function(request, response)
-	{	// set a cookie indicating the animal type from this request (the client will need that value in
-		// several pages) and serve the enrichment log page.
+	response.sendFile(path.join(__dirname, "../public/log.html"));
+})
+.use(express.static(path.join(__dirname, "../public")));
 
-		response.sendFile(path.join(__dirname, "../public/log.html"));
-	})
-	.use(express.static(path.join(__dirname, "../public")));
-
-// 03 	return router;
-// 03 })
-// 
-// 03 module.exports = routerIO;
 module.exports = router;

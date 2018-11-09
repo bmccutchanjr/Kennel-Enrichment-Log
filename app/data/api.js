@@ -5,14 +5,15 @@
 // client.  socket.io does not work directly with Express.js and requires additional middleware (html).
 // 
 // To use a route handler like this now requires that I pass the reference to sockets.io to this module
-// in the require statement, and that means I need a function to call.  Thus routerIO.  The module exports
-// routerIO, which is then called by require("./app/routes/html").  routerIO then return a reference to
-// router (const router = express.Router();) which is what server really needs.
+// in the require statement, and that means I need a function to call.  Thus routerIO.  This module exports
+// routerIO, which is executed when server.js requires it.  routerIO returns a reference to router (const
+// router = express.Router();) which is what server really needs.
 //
 // routerIO returns the reference to router that would normally be exported.  The more I learn about
 // JavaScript the less impressed I am.
 
 // Require the dependencies
+const animals = require("./animals.js");
 const chalk = require("chalk");
 const express = require("express");
 const path = require("path");
@@ -31,25 +32,24 @@ const routerIO = (function(io)
 	.use (function (request, response, next)
 	{   // I'm still having trouble debugging my routes.  I need somethng that always happens to log the
 		// request URL to the console.
-		// console.log(chalk.yellow("A ", request.device.type, " is requesting a file"));
-console.log(chalk.blue("requesting: ", request.url));
+
+console.log(chalk.red("api.js"));
+console.log(chalk.red("requesting: ", request.url));
 
 		next();
 	})
-	.get("/api/animals/all", function(request, response)
-	{	// Get all of the animals currently in the shelter for the specified animal type
+	.get("/animals/allactive/:group", function(request, response)
+	{	// Get all of the animals currently in the shelter for the specified animal type.  This is
+        // displayed on the browser as the Enrichment Log.
 
-		response.json(
-            [   {   "name": "Geronimo",
-                    "color": "blue",
-                },
-                {   "name": "Groot",
-                    "color": "black",
-                },
-                {   "name": "Abby",
-                    "color": "green",
-                },
-            ]);
+		animals.getAllActive (request.params.group, function(status, data)
+        {   // serve data returned from animals.getAll()
+
+            if (status != 200)
+                response.status(status).send(data);
+            else
+                response.status(200).json(data);
+        })
 	})
 	.get("/api/animals/:animalID", function(request, response)
 	{	// Get data for the animal with the specified id (animalID)

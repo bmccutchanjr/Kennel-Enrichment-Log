@@ -208,6 +208,29 @@ button:hover
 }
 
 /*                                      */
+/* style specific to .server-message    */
+/*                                      */
+
+.message-wrapper
+{   display: none;
+    height: auto;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+}
+
+.server-message
+{   background: #ff8f8f;
+    border: 2px solid #ff8f8f;
+    border-radius: 20px;
+    margin: 0px auto;
+    min-height: 300px;
+    padding: 50px;
+    text-align: center;
+    vertical-align: center;
+    width: 90vw;
+}
+/*                                      */
 /* style specific to sticky footer      */
 /*                                      */
 
