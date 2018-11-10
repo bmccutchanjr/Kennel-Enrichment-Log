@@ -22,8 +22,8 @@ $(document).ready(function()
         document.cookie = "animal-cookie=" + animal;
 
         if (isMobile)
-           window.open("/cagepage/" + animal);
+           location.replace("/cagepage/" + animal);
         else
-            window.open("/log/" + animal);
+            location.replace("/log/" + animal);
     })
 })

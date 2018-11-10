@@ -17,16 +17,12 @@
 //
 // This application is not in use at the shelter.  It's a personal excersize for me.
 
-//01 htmlRoutes doesn't need socket.io -- that IS required in apiRoutes though
-
 // Require the dependencies
-// const express = require('express')();
 const express = require('express');
 const http = require("http").Server(express);        // seems to be required for socket.io
 const io = require("socket.io")(http);               // push content to the browser
 const apiRoutes = require ("./app/data/api.js")(io);
 const htmlRoutes = require ("./app/routes/html.js");
-// 01 const htmlRoutes = require ("./app/routes/html.js")(io);
 
 // Configure ExpressJS
 const app = express();
