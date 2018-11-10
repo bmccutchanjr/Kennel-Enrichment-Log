@@ -10,7 +10,7 @@ const orm = require("./orm.js");
 const animals = 
 {   getAllActive: function (group, callback)
     {   
-        query = "select animal, color_code, cage from Animals where animal_group=? and active=true order by animal;";
+        query = "select id, animal, color_code, cage from Animals where animal_group=? and active=true order by animal;";
         orm.select (query, group, function(status, data)
         {   
             callback (status, data);

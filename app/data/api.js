@@ -16,7 +16,8 @@
 const animals = require("./animals.js");
 const chalk = require("chalk");
 const express = require("express");
-const path = require("path");
+// const path = require("path");
+const people = require("./people.js");
 
 // Configure express
 const app = express();
@@ -58,6 +59,18 @@ console.log(chalk.red("requesting: ", request.url));
             {   "name": "Geronimo",
                 "color": "blue",
             });
+	})
+	.get("/people/allactive/:group", function(request, response)
+	{	// Get all of the active volunteers permitted to interact with the selected group of animals
+
+		people.getAllActive (request.params.group, function(status, data)
+        {   // serve data returned from animals.getAll()
+
+            if (status != 200)
+                response.status(status).send(data);
+            else
+                response.status(200).json(data);
+        })
 	})
 	.post("/api/animals", function(request, response)
 	{	// INSERT a new animal into the database

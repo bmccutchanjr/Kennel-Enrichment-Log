@@ -52,14 +52,12 @@ router
 	response.sendFile(path.join(__dirname, "../public/cagepage.html"));
 })
 .get("/log/:folder/:what", function(request, response)
-{	// serve auxiliary files for /logs endpoint.
-	
+{	// serve auxiliary files for /logs route.
+
 	response.sendFile(path.join(__dirname, "../public/" + request.params.folder + "/" + request.params.what));
 })
 .get("/log/:animal", function(request, response)
-{	// set a cookie indicating the animal type from this request (the client will need that value in
-	// several pages) and serve the enrichment log page.
-
+{
 	response.sendFile(path.join(__dirname, "../public/log.html"));
 })
 .use(express.static(path.join(__dirname, "../public")));

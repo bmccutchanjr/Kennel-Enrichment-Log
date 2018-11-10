@@ -80,7 +80,7 @@ connection.query (query, function (error, results)
     }
 });
 
-var query = "select auth_level from AuthorityLevels;";
+var query = "select auth_type from AuthorityTypes;";
 connection.query (query, function (error, results)
 {   if (error)
     {   // This could actually be a fatal error, and may require more than just throwing
@@ -91,7 +91,7 @@ connection.query (query, function (error, results)
     if (!results)
     {   // Just because the SQL didn't puke doesn't mean that nothing went wrong!  No results
         // from this SELECT is a problem.
-        throw new Error ("INIT ERROR: No results from AuthorityLevels table");
+        throw new Error ("INIT ERROR: No results from AuthorityTypes table");
     }
 
     if (results.length === 0)

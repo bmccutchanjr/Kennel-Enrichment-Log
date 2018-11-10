@@ -43,7 +43,9 @@ main
 }
 
 .button-div img
-{   margin: 5px;
+{   border: 1px solid white;
+    border-radius: 15px;
+    margin: 5px;
 }
 
 .button-div img:hover
@@ -245,14 +247,10 @@ footer
 }
 
 @media screen and (max-width: 768px)
-{
-    /* #enrichment-table */
-    /* {   padding: 15px 0px 15px 0px; */
-    /* } */
-
-   .animal-row
+{  .animal-row
     {   width: 98vw;
     }
+
     .week-two
     {   display: none;
     }

@@ -1,0 +1,145 @@
+*
+{   box-sizing: border-box;
+}
+
+:root
+{   --head-bg-color: rgba(255, 255, 0, 0.5);
+    --head-brd-color: darkgray;
+}
+
+body
+{   color: black;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
+
+header
+{   
+    /* background: var(--head-bg-color); */
+    /* border: 2px solid var(--head-brd-color); */
+    /* border-radius: 5px; */
+    font-size: 30px;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+main
+{   
+    /* background: rgba(0, 0, 255, 0.5); */
+    height: auto;
+    /* padding: 20px; */
+    text-align: center;
+}
+
+.input
+{   border: 1px solid black;
+    border-radius: 15px;
+    margin: 0px auto 2px;
+    padding: 5px 15px 5px 15px;
+    width: 96vw;
+}
+
+.button-div
+{   bottom: 40px;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-wrap: nowrap; */
+    /* justify-content: space-between; */
+    position: absolute;
+    text-align: center;
+}
+
+.cage-button
+{   background: blue;
+    border: 1px solid blue;
+    border-radius: 15px;
+    color: white;
+    margin: 0px auto 2px;
+    padding: 5px 15px 5px 15px;
+    /* width: 45vw; */
+    width: 96vw;
+}
+
+.cage-button:hover
+{   background: white;
+    border: 1px solid blue;
+    color: blue;
+}
+
+/*                                      */
+/* style specific to .server-message    */
+/*                                      */
+
+.message-wrapper
+{   display: none;
+    height: auto;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+}
+
+.server-message
+{   background: #ff8f8f;
+    border: 2px solid #ff8f8f;
+    border-radius: 20px;
+    margin: 0px auto;
+    min-height: 300px;
+    padding: 50px;
+    text-align: center;
+    vertical-align: center;
+    width: 90vw;
+}
+
+/*                                      */
+/* style specific to sticky footer      */
+/*                                      */
+
+body, html
+{   height: 100%;
+}
+
+.wrapper
+{   
+    /* background: rgba(0, 255, 255, 0.5); */
+    height: auto;
+    margin-bottom: -43px;
+    min-height: 100%;
+    /* padding: 10px; */
+}
+
+.push
+{   
+    /* background: yellow; */
+    clear: both;
+    height: 43px;
+}
+
+footer
+{   background: var(--head-bg-color);
+    border: 1px solid var(--head-brd-color);
+    border-radius: 5px;
+    font-size: 10px;
+    margin: 10px;
+    padding: 5px;
+}
+
+/*                                      */
+/* media queries for responsive design  */
+/*                                      */
+
+@media screen and (max-width: 1200px)
+{
+}
+
+@media screen and (max-width: 990px)
+{
+}
+
+@media screen and (max-width: 768px)
+{
+}

@@ -139,7 +139,7 @@ create table People
     volgistics      smallint(6)                 -- volgistics id of this individual
                     default null,
 
-    auth_level      char(10)
+    auth_type      char(10)
                     default "volunteer",
 
     notes           int(10)
@@ -165,13 +165,13 @@ create table AuthorityLevels
     -- the purpose of this table.    It is used for validation purposes at the time of data
     -- entry and does not represent a relationship between these tables.
 
-    auth_level      char(10)
+    auth_type      char(10)
                     not null,
 
     auth_desc       varchar(100)
                     default null,
 
-    primary key (auth_level)
+    primary key (auth_type)
 )
 engine="InnoDB";
 

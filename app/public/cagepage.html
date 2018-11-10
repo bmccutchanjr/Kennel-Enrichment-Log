@@ -6,18 +6,33 @@
               content="width=device-width, initial-scale=1.0">
         <title></title>
 
-        <link href="style/style.css" rel="stylesheet" type="text/css">
+        <link href="style/cagepage.css" rel="stylesheet" type="text/css">
         <style>
         </style>
     </head>
 
     <body>
-CAGE PAGE
+        <div class="wrapper">
+            <header>Cage Page</header>
+            <main>
+                <select class="input" id="select-people"></select>
+                <select class="input" id="select-animals"></select>
+                <div class="button-div">
+                    <button class="cage-button" id="reasons">REASONS</button>
+                    <button class="cage-button" id="signout">SIGN OUT</button>
+                </div>
+            </main>
+        <div class="push"></div>
+        </div>
+        <footer style="position: relative;">Kennel Enrichment Log<span style="right: 5px; position: absolute;">Copyright&copy;</span></footer>
+        <div id="message-wrapper">
+            <div id="server-message"></div> 
+        </div>
     </body>
 
     <!-- link to jQuery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
-    <script language="JavaScript" src="javascript/cagapage.js">
+    <script language="JavaScript" src="javascript/cagepage.js">
     </script>
 </html>
