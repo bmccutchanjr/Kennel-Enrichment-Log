@@ -26,10 +26,10 @@ router
 
 	response.sendFile(path.join(__dirname, "../public/cagepage.html"));
 })
-.get("/log", function(request, response)
-{	// A request has been made for the '/log' endpoint.  Respond with the file 'log.html'.
+.get("/table", function(request, response)
+{	// A request has been made for the '/table' endpoint.  Respond with the file 'table.html'.
 
-	response.sendFile(path.join(__dirname, "../public/log.html"));
+	response.sendFile(path.join(__dirname, "../public/table.html"));
 })
 .use(express.static(path.join(__dirname, "../public")))
 .use(function (request, response)

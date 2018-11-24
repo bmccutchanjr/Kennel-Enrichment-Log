@@ -24,6 +24,6 @@ $(document).ready(function()
         if (isMobile)
             open("/cagepage", "_self");
         else
-            open("/log", "_self");
+            open("/table", "_self");
     })
 })
