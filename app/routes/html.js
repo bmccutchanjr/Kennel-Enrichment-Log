@@ -31,6 +31,10 @@ router
 
 	response.sendFile(path.join(__dirname, "../public/log.html"));
 })
-.use(express.static(path.join(__dirname, "../public")));
+.use(express.static(path.join(__dirname, "../public")))
+.use(function (request, response)
+{	// default route to handle 404 errors
+	response.sendFile(path.join(__dirname, "../public/404.html"));
+});
 
 module.exports = router;

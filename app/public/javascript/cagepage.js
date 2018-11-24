@@ -87,11 +87,15 @@ $(document).ready (function()
 
     $("#select-animals").change(function(event)
     {
+console.log("animalData");
+console.log(JSON.stringify(animalData, null, 2));
         var selected = $("#select-animals option:selected").val();
         var animal = animalData.find(function(data)
         {
             return data.id == selected;
         })
+console.log("animal");
+console.log(JSON.stringify(animal, null, 2));
         $("body").css("background", animal.color_code)
     })
 

@@ -5,7 +5,7 @@ const chalk = require("chalk");
 const connection = require("./connection.js");
 
 const colorCodes = [];              // color codes used in this app
-const animalGroups = [];            // animal groups (cats, dogs, etc) used
+const animalGroups = [];            // animal groups (cats, dogs, etc)
 const userTypes = [];               // types of people using the application
 
 function select (query)
