@@ -1,22 +1,4 @@
-// html.js is the handler for the static routes.
-//
-// 03 // This is not the typical route handler that I am used to writing, and I'm not 100% sure why it has to
-// 03 // be written this way.  This application uses socket.io so that it can push data from the server to the
-// 03 // client.  socket.io does not work directly with Express.js and requires additional middleware (html).
-// 03 // 
-// 03 // To use a route handler like this now requires that I pass the reference to sockets.io to this module
-// 03 // in the require statement, and that means I need a function to call.  Thus routerIO.  The module exports
-// 03 // routerIO, which is then called by require("./app/routes/html").  routerIO then return a reference to
-// 03 // router (const router = express.Router();) which is what server really needs.
-// 03 //
-// 03 // routerIO returns the reference to router that would normally be exported.  The more I learn about
-// 03 // JavaScript the less impressed I am.
-
-// 01 remove cookie-parser.
-
-// 02 remove code to test for client device type...that seems better suited to the client anyway.
-
-// 03 html.js doesn't need sockets.io -- that's required by api.js
+// html.js is the handler for the static routes and their auxillary files.
 
 // Require the dependencies
 const chalk = require("chalk");
@@ -31,33 +13,22 @@ app.use ("/", router);
 
 router
 .use (function (request, response, next)
-{   // I'm still having trouble debugging my routes.  I need somethng that always happens to log the
-	// request URL to the console.
-	// console.log(chalk.yellow("A ", request.device.type, " is requesting a file"));
+{   // This always happens always happens whenever any route is served in this module.  At the moment
+	// I use it to debug routes, but it could be something more useful.
 
 	console.log(chalk.blue("html.js"));
 	console.log(chalk.blue("requesting: ", request.url));
 
 	next();
 })
-.get("/cagepage/:folder/:what", function(request, response)
-{	// serve auxiliary files for /logs endpoint.
-	
-	response.sendFile(path.join(__dirname, "../public/" + request.params.folder + "/" + request.params.what));
-})
-.get("/cagepage/:animal", function(request, response)
-{	// set a cookie indicating the animal type from this request (the client will need that value in
-	// several pages) and serve the enrichment log page.
+.get("/cagepage", function(request, response)
+{	// A request has been made for the '/cagepage' endpoint.  Respond with the file 'cagepage.html'.
 
 	response.sendFile(path.join(__dirname, "../public/cagepage.html"));
 })
-.get("/log/:folder/:what", function(request, response)
-{	// serve auxiliary files for /logs route.
+.get("/log", function(request, response)
+{	// A request has been made for the '/log' endpoint.  Respond with the file 'log.html'.
 
-	response.sendFile(path.join(__dirname, "../public/" + request.params.folder + "/" + request.params.what));
-})
-.get("/log/:animal", function(request, response)
-{
 	response.sendFile(path.join(__dirname, "../public/log.html"));
 })
 .use(express.static(path.join(__dirname, "../public")));

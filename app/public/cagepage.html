@@ -15,8 +15,12 @@
         <div class="wrapper">
             <header>Cage Page</header>
             <main>
-                <select class="input" id="select-people"></select>
-                <select class="input" id="select-animals"></select>
+                <input class="input" id="select-people" list="people-list" placeholder="Please enter/select your name">
+                <datalist id="people-list"></datalist>
+
+                <input class="input" id="select-animals" list="animal-list" placeholder="Please enter/select the name of the animal">
+                <datalist id="animal-list"></datalist>
+
                 <div class="button-div">
                     <button class="cage-button" id="reasons">REASONS</button>
                     <button class="cage-button" id="signout">SIGN OUT</button>

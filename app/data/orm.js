@@ -1,11 +1,12 @@
-// Collect the functions used to manipulate the KennelLog database
+// This middleware collects the functions used to manipulate the KennelLog database
 
+// Require the dependencies
 const chalk = require("chalk");
 const connection = require("./connection.js");
 
-const colors = [];                                 // The color codes used in this app
-const groups = [];                                 // The animal function groups (cats, dogs, etc) used
-const authority = [];                              // authority levels used in this app
+const colorCodes = [];              // color codes used in this app
+const animalGroups = [];            // animal groups (cats, dogs, etc) used
+const userTypes = [];               // types of people using the application
 
 function select (query)
 {   // Generic handler for SQL SELECT.
@@ -20,6 +21,13 @@ function select (query)
     })
 }
 
+// Get a list of various values (animal groups, color codes and user types) used in the application.
+// These arrays are used to validate data input and help ensure integrity of the daabase.  There was
+// a time when these were actual FOREIGN KEY CONSTRAINTS in the database, but there isn't really a
+// logical relationship between colors and animals (colors are a "property" of animals and not a 
+// parent).  I was going to use them server-side in the modules, but I may even need to create a route
+// in api.js so the browser can request them as well.
+
 var query = "select color_code from AnimalColors;";
 connection.query (query, function (error, results)
 {   if (error)
@@ -28,25 +36,21 @@ connection.query (query, function (error, results)
         throw error;
     }
 
-    if (!results)
-    {   // Just because the SQL didn't puke doesn't mean that nothing went wrong!  No results
-        // from this SELECT is a problem.
-        throw new Error ("INIT ERROR: No results from AnimalColors table");
-    }
+    var rLen = results.length;
 
-    if (results.length === 0)
+    if (!results || rLen === 0)
     {   // Just because the SQL didn't puke doesn't mean that nothing went wrong!  No results
         // from this SELECT is a problem.
+
+        // throw an error
         throw new Error ("INIT ERROR: No results from AnimalColors table");
     }
 
     // We have successfully executed the query and we have results.  .push() those results into
     // colors[]
 
-    var rLength = results.length;
-    
-    for (var i=0; i<rLength; i++)
-    {   colors.push(results[i].color_code);
+    for (var i=0; i<rLen; i++)
+    {   colorCodes.push(results[i].color_code);
     }
 });
 
@@ -58,29 +62,25 @@ connection.query (query, function (error, results)
         throw error;
     }
 
-    if (!results)
+    var rLen = results.length;
+    
+    if (!results || rLen === 0)
     {   // Just because the SQL didn't puke doesn't mean that nothing went wrong!  No results
         // from this SELECT is a problem.
-        throw new Error ("INIT ERROR: No results from AnimalGroups table");
-    }
 
-    if (results.length === 0)
-    {   // Just because the SQL didn't puke doesn't mean that nothing went wrong!  No results
-        // from this SELECT is a problem.
+        // throw an error
         throw new Error ("INIT ERROR: No results from AnimalGroups table");
     }
 
     // We have successfully executed the query and we have results.  .push() those results into
     // groups[]
 
-    var rLength = results.length;
-    
-    for (var i=0; i<rLength; i++)
-    {   groups.push(results[i].animal_group);
+    for (var i=0; i<rLen; i++)
+    {   animalGroups.push(results[i].animal_group);
     }
 });
 
-var query = "select auth_type from AuthorityTypes;";
+var query = "select user_type from UserTypes;";
 connection.query (query, function (error, results)
 {   if (error)
     {   // This could actually be a fatal error, and may require more than just throwing
@@ -88,42 +88,38 @@ connection.query (query, function (error, results)
         throw error;
     }
 
-    if (!results)
+    var rLen = results.length;
+    
+    if (!results || rLen === 0)
     {   // Just because the SQL didn't puke doesn't mean that nothing went wrong!  No results
         // from this SELECT is a problem.
-        throw new Error ("INIT ERROR: No results from AuthorityTypes table");
-    }
 
-    if (results.length === 0)
-    {   // Just because the SQL didn't puke doesn't mean that nothing went wrong!  No results
-        // from this SELECT is a problem.
-        throw new Error ("INIT ERROR: No results from AuthorityLevels table");
+        // throw an error
+        throw new Error ("INIT ERROR: No results from UserTypes table");
     }
 
     // We have successfully executed the query and we have results.  .push() those results into
     // authorities[]
 
-    var rLength = results.length;
-    
-    for (var i=0; i<rLength; i++)
-    {   authority.push(results[i].auth_level);
+    for (var i=0; i<rLen; i++)
+    {   userTypes.push(results[i].user_type);
     }
 });
 
 const orm =
-{   getColors: function ()
+{   getColorCodes: function ()
     {   // Return the list of colors codes used in this application
-        return colors;
+        return colorCodes;
     },
 
-    getGroups: function ()
+    getAnimalGroups: function ()
     {   // Return the list of functional groups used in this application
-        return groups;
+        return animalGroups;
     },
 
-    getAuthority: function ()
+    getUserTypes: function ()
     {   // Return the list of authority levels used in this application
-        return authority;
+        return userTypes;
     },
 
     select: function (query, where, callback)

@@ -7,17 +7,16 @@ function getAnimals (animalGroup = "dogs")
     $.get ("/api/animals/allactive/" + animalGroup)
     .then (function(results)
     {   
-        var select = $("#select-animals");
+        var aList = $("#animal-list");
 
         for (var i=0; i<results.length; i++)
         {
             var option = $("<option>");
             option
                 .addClass("animal-options")
-                .attr("value", results[i].id)
                 .text(results[i].animal);
 
-            select.append (option);
+            aList.append (option);
         }
 
         animalData = results
@@ -47,17 +46,16 @@ function getPeople (animalGroup = "dogs")
     $.get ("/api/people/allactive/" + animalGroup)
     .then (function(results)
     {   
-        var select = $("#select-people");
+        var pList = $("#people-list");
 
         for (var i=0; i<results.length; i++)
         {
             var option = $("<option>");
             option
                 .addClass("people-options")
-                .attr("value", results[i].id)
                 .text(results[i].surname + ", " + results[i].given);
 
-            select.append (option);
+            pList.append (option);
         }
     })
     .catch (function(error)

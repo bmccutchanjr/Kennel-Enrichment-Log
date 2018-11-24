@@ -139,7 +139,7 @@ create table People
     volgistics      smallint(6)                 -- volgistics id of this individual
                     default null,
 
-    auth_type      char(10)
+    user_type       char(10)
                     default "volunteer",
 
     notes           int(10)
@@ -158,35 +158,41 @@ create table People
 )
 engine="InnoDB";
 
-create table AuthorityLevels
-(   -- Master table of authority levels (admin, staff or volunteer)
+create table UserTypes
+(   -- Master table of types of people (admin, staff or volunteer) using this application
     --
     -- I had originally made this table a FOREIGN KEY constraint in People.  But that's not really 
     -- the purpose of this table.    It is used for validation purposes at the time of data
     -- entry and does not represent a relationship between these tables.
 
-    auth_type      char(10)
+    user_type       char(10)
                     not null,
 
-    auth_desc       varchar(100)
+    reason          varchar(100)
                     default null,
 
-    primary key (auth_type)
+    primary key (user_type)
 )
 engine="InnoDB";
 
-insert into AuthorityLevels (auth_level, auth_desc)
+insert into UserTypes (user_type, reason)
 values ("admin", "Granted access to administrative functions of this application"),
        ("staff", null),
        ("volunteer", null);
 
-create table AnimalPermissions
+create table PeoplePermissions
 (   -- This table represents the group and color of animals that one individual is allowed to interact
     -- with.  It is a one-to-many relationship.  One person can be authorized to interact with more
     -- than one of the animal groups if they have completed the required orientation classes.
     --
     -- Note that it is the combination of group and color these permissions represent.  An individual
     -- may be permitted to walk green, orange, blue and purple dogs but only green and orange cats.
+    --
+    -- More specific combinations override less specific combinations.  for instance:
+    --  George, null, dogs, blue, true              would authorize George to walk blue dogs
+    --  George, Geronimo, dogs, blue, false         would override George's permission for this one dog
+    --                                              named Geronimo, and does not affect permission to walk
+    --                                              other blue dogs.
 
     id              int(10)
                     not null
@@ -195,44 +201,27 @@ create table AnimalPermissions
     person          int(10)                     -- the primary key of the record in People representing
                     not null,                   -- this individual
 
+    animal          int(10)                     -- the primary key of the record in Animals representing
+                    default null,               -- this animal
+
     animal_group    char(10)
                     not null,
 
     color_code      char(10)
                     not null,
 
-    auth_by         int(10)                     -- the primary key of the record representing the person
+    permitted       tinyint(1)                  -- is this a permission or a restriction?
+                    not null
+                    default 0,
+
+    mod_by          int(10)                     -- the primary key of the record representing the person
                     not null,                   -- who authorized this level
 
-    auth_date       date                        -- the date this individual was authorized
+    mod_date        date                        -- the date this individual was authorized
                     not null,
 
     foreign key (person) references People (id),
     primary key (id)
-)
-engine="InnoDB";
-
-create table AnimalRestrictions
-(   -- This table represents restrictions placed on an individual.  For instance thay may be allowed
-    -- to walk purple dogs, but not this one dog
-
-    person          int(10)                     -- the primary key of the person this record represents
-                    not null,
-
-    animal          int(10)                     -- the primary key of the animal this record represents
-                    not null,
-
-    notes           int(10)
-                    default null,
-
-    restrict_by     int(10)                     -- the primary key of the record representing the person
-                    not null,                   -- who created or modified this restriction
-
-    restrict_date   date                        -- the date this individual was restricted
-                    not null,
-
-    foreign key (person) references People (id),
-    primary key (person, animal)
 )
 engine="InnoDB";
 

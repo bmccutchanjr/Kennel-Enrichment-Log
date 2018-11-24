@@ -26,8 +26,8 @@ const htmlRoutes = require ("./app/routes/html.js");
 
 // Configure ExpressJS
 const app = express();
-
-const PORT = process.env.PORT || 8080;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
@@ -42,10 +42,13 @@ io.on('connection', function(socket){
 //     io.emit('stock price update', stockprice);
 // }, 1000);
   
+// Set the PORT to be used by the server.  If the Node.js process environment has a variable defined called
+// PORT, this application is likely deployed on Heroku and it must use the server must use the port specified
+// by Heroku.  If the process environment does not have a PORT variable defined it is probably running locally
+// and can use pretty much whatever port I want.
+const PORT = process.env.PORT || 8080;
 
-// Start the server
-// http.listen(PORT, function()
 app.listen(PORT, function()
-{
-  console.log("KennelLog listening on :", PORT);
+{   // Start the server
+    console.log("KennelLog listening on :", PORT);
 });

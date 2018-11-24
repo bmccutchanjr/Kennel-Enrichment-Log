@@ -1,4 +1,4 @@
-// Kennel Enrichment Log
+// JavaScript for the Kennel Enrichment Log page
 
 var tableData = {};
 var currentSort = "by name";

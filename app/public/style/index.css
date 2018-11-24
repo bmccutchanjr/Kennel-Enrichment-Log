@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 *
 {   box-sizing: border-box;
 }
@@ -9,7 +12,7 @@
 
 body
 {   color: black;
-    font-family: sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     margin: 0px;
     padding: 0px;
@@ -37,17 +40,22 @@ main
 }
 
 .animal-button
-{   border: 2px solid black;
-    border-radius: 50%;
-    height: 300px;
+{   background: #cfcfff;
+    border: 3px double black;
+    border-radius: 15px;
+    font-size: 36px;
+    /* height: 300px; */
+    height: 150px;
     margin: 25px;
     overflow: hidden;
+    padding: 45px;
     text-align: center;
+    vertical-align: center;
     width: 300px;
 }
 
 .animal-button:hover
-{   box-shadow: 0px 0px 10px 10px red;
+{   box-shadow: 0px 0px 10px 10px #8f8f8f;
 }
 
 /*                                      */
