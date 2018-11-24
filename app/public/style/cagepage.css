@@ -59,6 +59,7 @@ main
     border: 1px solid blue;
     border-radius: 15px;
     color: white;
+    display: none;
     margin: 0px auto 2px;
     padding: 5px 15px 5px 15px;
     /* width: 45vw; */
