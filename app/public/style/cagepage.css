@@ -32,7 +32,7 @@ main
 {   
     /* background: rgba(0, 0, 255, 0.5); */
     height: auto;
-    /* padding: 20px; */
+    padding: 10px;
     text-align: center;
 }
 
@@ -76,24 +76,49 @@ main
 /* style specific to .server-message    */
 /*                                      */
 
-.message-wrapper
+#message-wrapper
 {   display: none;
     height: auto;
     position: fixed;
-    top: 100px;
+    top: 15vh;
     width: 100%;
 }
 
-.server-message
+#message-div
 {   background: #ff8f8f;
-    border: 2px solid #ff8f8f;
-    border-radius: 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
     margin: 0px auto;
     min-height: 300px;
-    padding: 50px;
+    min-width: 300px;
+    padding: 10px;
+    /* position: relative; */
     text-align: center;
-    vertical-align: center;
-    width: 90vw;
+    /* vertical-align: center; */
+    width: 50vw;
+}
+#message-text
+{   flex-grow: 1;
+}
+
+#message-button
+{   background: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    /* bottom: 10px; */
+    color: white;
+    flex-grow: 0;
+    margin-top: 10px;
+    padding: 2px;
+    /* position: absolute; */
+    width: 100%;
+}
+
+#message-button:hover
+{   background: white;
+    color: red;
 }
 
 /*                                      */
@@ -124,9 +149,22 @@ footer
 {   background: var(--head-bg-color);
     border: 1px solid var(--head-brd-color);
     border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     font-size: 10px;
     margin: 10px;
+    /* padding: 5px; */
+}
+
+.footer-div
+{   flex-grow: 1;
     padding: 5px;
+    width: 30%;
+}
+
+#page-name
+{   text-align: right;
 }
 
 /*                                      */

@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <head>
-        <meta charset="UTF=8">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0">
-        <title></title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+    <title></title>
 
-        <link href="style/cagepage.css" rel="stylesheet" type="text/css">
-        <style>
-        </style>
-    </head>
+    <link href="style/cagepage.css" rel="stylesheet" type="text/css">
+    <style>
+    </style>
+</head>
 
-    <body>
-        <div class="wrapper">
-            <header>Cage Page</header>
-            <main>
-                <input class="input" id="select-people" list="people-list" placeholder="Please enter/select your name">
-                <datalist id="people-list"></datalist>
+<body>
+    <div class="wrapper">
+        <!-- <header>Cage Page</header> -->
+        <main>
+            <input class="input" id="select-people" list="people-list" placeholder="Please enter/select your name">
+            <datalist id="people-list"></datalist>
 
-                <input class="input" id="select-animal" list="animal-list" placeholder="Please enter/select the name of the animal">
-                <datalist id="animal-list"></datalist>
+            <input class="input" id="select-animal" list="animal-list" placeholder="Please enter/select the name of the animal">
+            <datalist id="animal-list"></datalist>
 
-                <div class="button-div">
-                    <button class="cage-button" id="reasons">REASONS FOR THIS COLOR</button>
-                    <button class="cage-button" id="signout" function="sign out">SIGN OUT OF CAGE</button>
-                    <button class="cage-button" id="public-notes">NOTES FOR THE PUBLIC</button>
-                    <button class="cage-button" id="color-notes">COLOR NOTES</button>
-                </div>
-            </main>
-        <div class="push"></div>
-        </div>
-        <footer style="position: relative;">Kennel Enrichment Log<span style="right: 5px; position: absolute;">Copyright&copy;</span></footer>
-        <div id="message-wrapper">
-            <div id="server-message"></div> 
-        </div>
-    </body>
+            <div class="button-div">
+                <button class="cage-button" id="reasons">REASONS FOR THIS COLOR</button>
+                <button class="cage-button" id="signout" function="sign out">SIGN OUT OF CAGE</button>
+                <button class="cage-button" id="public-notes">NOTES FOR THE PUBLIC</button>
+                <button class="cage-button" id="color-notes">COLOR NOTES</button>
+            </div>
+        </main>
+    <div class="push"></div>
+    </div>
 
-    <!-- link to jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-    <script language="JavaScript" src="javascript/cagepage.js">
-    </script>
+    <footer>
+        <div class="footer-div" id="app-name">Kennel Enrichment Log</div>
+        <div class="footer-div" id="page-name">Cage Page</div>
+    </footer>
+    
+    <section id="message-wrapper">
+        <div id="message-div">
+            <div id="message-text"></div>
+            <button id="message-button">CLOSE</button>
+        </div> 
+    </section>
+</body>
+
+<!-- link to jQuery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script language="JavaScript" src="javascript/cagepage.js">
+</script>
 </html>

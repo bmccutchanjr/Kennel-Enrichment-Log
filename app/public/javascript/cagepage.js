@@ -31,13 +31,13 @@ function getAnimals (animalGroup = "dogs")
         // the console to see a more detailed error.
 
         if (error.responseText)
-            $(".server-message").text(error.responseText)
+            $("#server-message").text(error.responseText)
         else
-            $(".server-message")
+            $("#server-text")
             .text("An unspecified run time error occured in this script.  Please contact " +
                   "your IT staff for support.  More details may be available on the console.");
 
-        $(".message-wrapper").css("display", "block");
+        $("#message-wrapper").css("display", "block");
     })
 }
 
@@ -68,13 +68,13 @@ function getPeople (animalGroup = "dogs")
         // the console to see a more detailed error.
 
         if (error.responseText)
-            $(".server-message").text(error.responseText)
+            $("#server-message").text(error.responseText)
         else
-            $(".server-message")
+            $("#server-text")
             .text("An unspecified run time error occured in this script.  Please contact " +
                   "your IT staff for support.  More details may be available on the console.");
 
-        $(".message-wrapper").css("display", "block");
+        $("#message-wrapper").css("display", "block");
     })
 }
 
@@ -85,6 +85,12 @@ $(document).ready (function()
     getAnimals (cookie["animal-cookie"]);
 
     getPeople (cookie["animal-cookie"]);
+
+    $("#message-button").click(function(event)
+    {   event.preventDefault();
+
+        $("#message-wrapper").css("display", "none");
+    })
 
     $("#select-people").change(function(event)
     {   event.preventDefault();
@@ -100,6 +106,12 @@ $(document).ready (function()
 
     $("#select-animal").change(function(event)
     {   event.preventDefault();
+
+        // This doesn't work well as it is.  There can be (and have been) more than one animal at the shelter
+        // with the same name.  IN that case, the name appear in the list multiple times, but the following
+        // code cannot distinguish between them.  It will select the first animal with that name -- every
+        // time.  I'm thinking I need to modify names in animalData, which in turn will alter the names in
+        // the <DATALIST>.  The question is how...
 
         var name = $("#select-animal").val().trim();
 
@@ -117,12 +129,14 @@ $(document).ready (function()
     $("#color-notes").click(function(event)
     {   event.preventDefault ();
 
-        // This button should not de displayed until an animal has been returned to its cage
-
-alert("#color-notes clicked");
+        // This button should not be displayed until an animal has been returned to its cage
 
         // COLOR NOTES should only display if the animal has been assigned a color code of "purple"
         // or "black".  These notes differ somewhat, so I suppose they need separate pages.
+
+        $("#message-text").empty();
+        $("#message-text").text("The COLOR NOTES button has not been implemented")
+        $("#message-wrapper").css("display", "block");
     })
 
     $("#public-notes").click(function(event)
@@ -130,7 +144,9 @@ alert("#color-notes clicked");
 
         // This button should not de displayed until an animal has been returned to its cage
 
-alert("public-notes clicked");
+        $("#message-text").empty();
+        $("#message-text").text("The PUBLIC NOTES button has not been implemented")
+        $("#message-wrapper").css("display", "block");
     })
 
     $("#reasons").click(function(event)
@@ -138,17 +154,18 @@ alert("public-notes clicked");
 
         // This button should not de displayed until an animal has been selected
 
-alert("reasons clicked");
         // Retrieve and display the reasons the staff has assigned this color code to this animal.  This
         // will be displayed as a modal dialog on cagepage, and needs a button to close the dialog.
+
+        $("#message-text").empty();
+        $("#message-text").text("The REASONS button has not been implemented")
+        $("#message-wrapper").css("display", "block");
     })
 
     $("#signout").click(function(event)
     {   event.preventDefault ();
 
         // This button should not de displayed until an animal has been selected
-
-alert("signout clicked");
 
         var button = $("#signout");
 
